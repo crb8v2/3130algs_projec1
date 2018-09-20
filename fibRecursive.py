@@ -1,7 +1,5 @@
 from timeit import default_timer as timer
 
-start = timer()
-
 
 def fib_recursion(n):
     if n == 0:
@@ -10,10 +8,6 @@ def fib_recursion(n):
         return 1
 
     return fib_recursion(n-1) + fib_recursion(n-2)
-
-
-end = timer()
-start1 = timer()
 
 
 def fib_iteration(n):
@@ -33,17 +27,50 @@ def fib_iteration(n):
     return result
 
 
+def fib_iteration_hundred_digits(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+
+    minus_two = 0
+    minus_one = 1
+
+    for x in range(1, n):
+        result = minus_two + minus_one
+        minus_two = minus_one
+        minus_one = result
+
+    return result
+
+
+#recursion
+start = timer()
+print(fib_recursion(10))
+end = timer()
+
+#iteration
+start1 = timer()
+print(fib_iteration(10))
 end1 = timer()
 
-print(fib_recursion(6))
+# # for 100 digit array
+# n = 35
+# array = [int(x) for x in str(fib_iteration_hundred_digits(n))]
+# print(array)
+# print(len(array))
 
+n = 10
+array = []
 
-print(fib_iteration(6))
+while len(array) < 100:
+    array = [int(x) for x in str(fib_iteration_hundred_digits(n))]
+    n = n+1
 
-
-print((end - start)*10000000)
-
-print((end1 - start1)*10000000)
+print(array)
+# timers
+print((end - start))
+print((end1 - start1))
 
 
 
