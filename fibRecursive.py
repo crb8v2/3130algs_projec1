@@ -10,6 +10,8 @@ def fib_recursion(n):
 
 # recursion
 print("RECURSIVE")
+print(fib_recursion(10))
+print(fib_recursion(20))
 print(fib_recursion(30))
 
 
